@@ -1,6 +1,7 @@
 {
-  "name": "hub-customer-detail-example",
-  "baseUrl": "https://micalevisk.github.io/tarken-extension-simple-vanilla-example/customer-detail-tabs",
+  "$schema": "https://raw.githubusercontent.com/tarkenag/tex-schemas/v0/manifest.json",
+  "name": "exemplo-new-location",
+  "baseUrl": "https://micalevisk.github.io/tarken-extension-simple-vanilla-example/customer-detail-tabs/",
   "modules": [
     {
       "key": "0",
@@ -11,9 +12,7 @@
         "entryLabel": "Teste 1 da nova location",
         "description": "Exemplo 1 para a nova location"
       },
-      "queryParameters": {},
-      "_queryParametersPaths": {},
-      "_queryParametersLiterals": {}
+      "queryParameters": {}
     },
     {
       "key": "1",
@@ -24,9 +23,7 @@
         "entryLabel": "Teste 2 da nova location",
         "description": "Exemplo 2 para a nova location"
       },
-      "queryParameters": {},
-      "_queryParametersPaths": {},
-      "_queryParametersLiterals": {}
+      "queryParameters": {}
     },
     {
       "key": "3",
@@ -37,9 +34,7 @@
         "entryLabel": "Teste 2 da nova location",
         "description": "Exemplo 2 para a nova location"
       },
-      "queryParameters": {},
-      "_queryParametersPaths": {},
-      "_queryParametersLiterals": {}
+      "queryParameters": {}
     }
   ],
   "private": true,
