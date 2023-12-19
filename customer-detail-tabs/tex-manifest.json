@@ -1,6 +1,6 @@
 {
   "name": "hub-customer-detail-example",
-  "baseUrl": "http://localhost:7801",
+  "baseUrl": "https://micalevisk.github.io/tarken-extension-simple-vanilla-example/customer-detail-tabs",
   "modules": [
     {
       "key": "0",
