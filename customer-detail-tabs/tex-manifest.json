@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/tarkenag/tex-schemas/v0/manifest.json",
   "name": "teste__hub.customer-detail-tabs.navigation-bar.top",
   "baseUrl": "https://micalevisk.github.io/tarken-extension-simple-vanilla-example/customer-detail-tabs/",
   "modules": [
