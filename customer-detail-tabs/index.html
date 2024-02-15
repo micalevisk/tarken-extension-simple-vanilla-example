@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Minha extensão</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@1/dist/tex-helper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@2/lib/tex-helper.js"></script>
   <style>
   body {
     border-style: solid;
@@ -49,6 +49,8 @@ Nam vel nunc efficitur, aliquam tortor ut, rhoncus justo. Proin tristique urna q
           document.body.style.borderStyle= "none"
         }
       )
+
+      window.Tarken.tex.listen()
     </script>
   </body>
 </html>
