@@ -51,6 +51,7 @@ Nam vel nunc efficitur, aliquam tortor ut, rhoncus justo. Proin tristique urna q
       window.Tarken.tex.onAuthorized(
         function onAuthorizedEventHandler(data) {
           waitingAuth$.remove()
+          document.body.style.borderStyle= "green"
           //console.debug('authz dentro da extensão: ', data)
         }
       )
