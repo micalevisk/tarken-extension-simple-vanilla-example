@@ -40,19 +40,28 @@
     },
     {
       "key": "3",
+      "urlHash": {
+        "b": "{{ accessToken }}",
+        "c": "{{ organizationId }}"
+      },
       "urlPath": "/",
       "location": "hub.customer-detail-tabs.navigation-bar.top",
       "attributes": {
-        "entryLabel": "Teste 4 location",
+        "entryLabel": "Teste 4 location!!",
         "description": "Exemplo com access token"
-      },
-      "queryParameters": {
-        "b": "{{ accessToken }}"
+      }
+    },
+    {
+      "key": "test-sf",
+      "urlPath": "/",
+      "location": "type:hub.organization.customer.smart-form-field",
+      "attributes": {
+        "description": "Exemplo de detail"
       }
     }
   ],
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.7",
   "apiVersion": "*",
   "vendorName": "Tarkenag",
   "description": "Exemplo de novo location",
