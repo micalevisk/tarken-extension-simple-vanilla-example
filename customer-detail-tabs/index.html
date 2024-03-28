@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Minha extensão</title>
     <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@3/lib/tex-helper.js"></script>
-  <style>
-  body {
-    border-style: solid;
-    border-color: red;
-    min-height: fit-content;
-  }
-  </style>
+    <style>
+      body {
+        border-style: solid;
+        border-color: red;
+        min-height: fit-content;
+      }
+      * {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
     <div>
@@ -46,7 +50,6 @@ Etiam laoreet arcu lobortis nulla ultricies convallis. Phasellus non justo quis 
       window.Tarken.tex.onAuthorized(
         function onAuthorizedEventHandler(data) {
           waitingAuth$.remove()
-          document.body.style.borderColor= "green"
           //console.debug('authz dentro da extensão: ', data)
           document.body.style.borderColor= "green"
         }
