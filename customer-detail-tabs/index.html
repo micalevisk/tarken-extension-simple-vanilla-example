@@ -58,7 +58,7 @@ Etiam laoreet arcu lobortis nulla ultricies convallis. Phasellus non justo quis 
         function onContextEventHandler(data) {
           waitingContext$.remove()
           //console.debug('contexto dentro da extensão: ', data)
-          document.body.style.borderColor= "none"
+          document.body.style.border = "0"
 
           contextSlot$.innerHTML = JSON.stringify(data, null, 2)
         }
