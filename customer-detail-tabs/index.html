@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Minha extensão</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@3/lib/tex-helper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@*/lib/tex-helper.js"></script>
+    <!-- <script src="./tex-helper.js"></script> -->
     <style>
       body {
         border-style: solid;
@@ -26,9 +27,21 @@
       <h3 id='h3'></h3>
       <pre id="context-slot"></pre>
       <div>
-Etiam laoreet arcu lobortis nulla ultricies convallis. Phasellus non justo quis urna sollicitudin venenatis. Donec sed semper nisi. Praesent sed lacus sed justo vulputate dictum et ut turpis. Ut in tellus laoreet, malesuada metus non, mollis neque. Proin a condimentum ex. Maecenas tempus, arcu at condimentum pharetra, neque libero tincidunt neque, id pharetra nibh magna vitae quam. Sed placerat porttitor condimentum. Sed scelerisque porta augue eget tempus. Nullam sit amet leo lacinia diam commodo bibendum.
      </div>
     </div>
+    <script>
+      function disparar() {
+        window.Tarken.tex.bridge.dispatchOperation({
+          operation: "workflow.ticket:move",
+          args: {
+            ticketId: "17bb0360-f6e1-4ac5-9172-8a01f639ef62",
+            fromPhaseId: "80080d6d-127d-4ce8-8b95-492a9b78669f",
+            toPhaseId: "80080d6d-127d-4ce8-8b95-492a9b78669f",
+          }
+        })
+      }
+    </script>
+    <button type="button" onclick="disparar()">disparar chamada</button>
     <script type="module">
       const waitingAuth$ = document.getElementById('waiting_auth')
       const waitingContext$ = document.getElementById('waiting_context')
@@ -56,6 +69,7 @@ Etiam laoreet arcu lobortis nulla ultricies convallis. Phasellus non justo quis 
 
       window.Tarken.tex.onContext(
         function onContextEventHandler(data) {
+          //alert('Novo contexto recebido')
           waitingContext$.remove()
           //console.debug('contexto dentro da extensão: ', data)
           document.body.style.border = "0"
