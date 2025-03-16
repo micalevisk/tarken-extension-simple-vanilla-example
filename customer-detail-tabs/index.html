@@ -1,89 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Minha extensão</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@*/lib/tex-helper.js"></script>
-    <!-- <script src="./tex-helper.js"></script> -->
-    <style>
-      body {
-        border-style: solid;
-        border-color: red;
-        min-height: fit-content;
-      }
-      * {
-        margin: 0 auto;
-      }
-    </style>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Minha extensão</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@beta/lib/tex-helper.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@tarkenag/tex-extension-helper@latest/lib/tex-helper.js"></script> -->
+  <!-- <script src="./tex-helper.js"></script> -->
+  <style>
+    body {
+      border-style: solid;
+      border-color: red;
+      min-height: fit-content;
+    }
+
+    * {
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1 id="waiting_auth">Esperando autenticação...</h1>
+    <h1 id="waiting_context">Esperando contexto...</h1>
+
+    <h1>Hello world!!</h1>
+    <h3 id='h3'></h3>
+    <pre id="tex-metadata-slot"></pre>
+    <pre id="context-slot"></pre>
     <div>
-      <h1 id="waiting_auth">Esperando autenticação...</h1>
-      <h1 id="waiting_context">Esperando contexto...</h1>
-
-      <h1>Hello world!!</h1>
-      <h3 id='h3'></h3>
-      <pre id="context-slot"></pre>
-      <div>
-     </div>
     </div>
-    <script>
-      function disparar() {
-        window.Tarken.tex.bridge.dispatchOperation({
-          operation: "workflow.ticket:move",
-          args: {
-            ticketId: "17bb0360-f6e1-4ac5-9172-8a01f639ef62",
-            fromPhaseId: "80080d6d-127d-4ce8-8b95-492a9b78669f",
-            toPhaseId: "80080d6d-127d-4ce8-8b95-492a9b78669f",
-          }
-        })
-      }
-    </script>
-    <button type="button" onclick="disparar()">disparar chamada</button>
-    <script type="module">
-      const waitingAuth$ = document.getElementById('waiting_auth')
-      const waitingContext$ = document.getElementById('waiting_context')
-      const h3$ = document.getElementById('h3')
-      const contextSlot$ = document.getElementById('context-slot')
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const a = urlParams.get('a') || undefined
-      const b = urlParams.get('b') || undefined
-
-      if (a) {
-        h3$.innerText = `A: ${a}`;
-      }
-      if (b) {
-        h3$.innerText = `B: ${b}`;
-      }
-
-      window.Tarken.tex.onAuthorized(
-        function onAuthorizedEventHandler(data) {
-          waitingAuth$.remove()
-          //console.debug('authz dentro da extensão: ', data)
-          document.body.style.borderColor= "green"
+  </div>
+  <script>
+    function disparar() {
+      window.Tarken.tex.bridge.dispatchOperation({
+        operation: "workflow.ticket:move",
+        args: {
+          ticketId: "17bb0360-f6e1-4ac5-9172-8a01f639ef62",
+          fromPhaseId: "80080d6d-127d-4ce8-8b95-492a9b78669f",
+          toPhaseId: "80080d6d-127d-4ce8-8b95-492a9b78669f",
         }
-      )
-
-      window.Tarken.tex.onContext(
-        function onContextEventHandler(data) {
-          //alert('Novo contexto recebido')
-          waitingContext$.remove()
-          //console.debug('contexto dentro da extensão: ', data)
-          document.body.style.border = "0"
-
-          contextSlot$.innerHTML = JSON.stringify(data, null, 2)
-        }
-      )
-
-      window.Tarken.tex.listen({
-        contentSize: () => ({
-          width: document.documentElement.offsetWidth,
-          height: document.documentElement.offsetHeight,
-        }),
       })
-    </script>
-  </body>
+    }
+  </script>
+  <button type="button" onclick="disparar()">Movimentar ticket</button>
+  <script type="module">
+    const waitingAuth$ = document.getElementById('waiting_auth')
+    const waitingContext$ = document.getElementById('waiting_context')
+    const h3$ = document.getElementById('h3')
+    const contextSlot$ = document.getElementById('context-slot')
+    const texMetadatSlot$ = document.getElementById('tex-metadata-slot')
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const a = urlParams.get('a') || undefined
+    const b = urlParams.get('b') || undefined
+
+    if (a) {
+      h3$.innerText = `A: ${a}`;
+    }
+    if (b) {
+      h3$.innerText = `B: ${b}`;
+    }
+
+    window.Tarken.tex.onAuthorized(
+      function onAuthorizedEventHandler(data) {
+        waitingAuth$.remove()
+        //console.debug('authz dentro da extensão: ', data)
+        document.body.style.borderColor = "green"
+      }
+    )
+
+    window.Tarken.tex.onContext(
+      function onContextEventHandler(data) {
+        //alert('Novo contexto recebido')
+        waitingContext$.remove()
+        document.body.style.border = "0"
+
+        contextSlot$.innerHTML = 'OBJETO DE CONTEXTO:\n' + JSON.stringify(data, null, 2)
+      }
+    )
+
+    window.Tarken.tex.listen({
+      contentSize: () => ({
+        width: document.documentElement.offsetWidth,
+        height: document.documentElement.offsetHeight,
+      }),
+    })
+
+    if (!texMetadatSlot$.innerHTML) {
+      const libVersion = window.Tarken.tex.version;
+      const environment = await window.Tarken.tex.environment;
+
+      texMetadatSlot$.innerHTML = `
+<table style="width: 50%; border-collapse: collapse; font-family: Arial, sans-serif; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  <tr>
+    <th style="background-color: #4CAF50; color: white; padding: 12px; border: 1px solid #ddd; text-align: left;">TEx version</th>
+    <th style="background-color: #4CAF50; color: white; padding: 12px; border: 1px solid #ddd; text-align: left;">environment</th>
+  </tr>
+  <tr>
+    <td style="padding: 10px; border: 1px solid #ddd; text-align: left; background-color: #f9f9f9;">${libVersion}</td>
+    <td style="padding: 10px; border: 1px solid #ddd; text-align: left; background-color: #f9f9f9;">${environment}</td>
+  </tr>
+</table>
+`.trim();
+    }
+
+
+  </script>
+</body>
+
 </html>
