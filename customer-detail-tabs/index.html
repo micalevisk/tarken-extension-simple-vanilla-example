@@ -91,11 +91,11 @@
       }),
     })
 
-    if (!texMetadatSlot$.innerHTML) {
-      const libVersion = window.Tarken.tex.version;
-      const environment = await window.Tarken.tex.environment;
+    await window.Tarken.tex.bridge.signals.communicationReady;
 
-      texMetadatSlot$.innerHTML = `
+    const libVersion = window.Tarken.tex.version;
+    const environment = window.Tarken.tex.environment;
+    texMetadatSlot$.innerHTML = `
 <table style="width: 50%; border-collapse: collapse; font-family: Arial, sans-serif; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
   <tr>
     <th style="background-color: #4CAF50; color: white; padding: 12px; border: 1px solid #ddd; text-align: left;">TEx version</th>
@@ -107,7 +107,6 @@
   </tr>
 </table>
 `.trim();
-    }
 
 
   </script>
