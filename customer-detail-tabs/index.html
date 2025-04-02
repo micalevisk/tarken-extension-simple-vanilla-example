@@ -69,8 +69,7 @@
 
     window.Tarken.tex.onAuthorized(
       function onAuthorizedEventHandler(data) {
-        waitingAuth$.remove();
-        alert('window.parent.origin:' + window.parent?.origin)
+        waitingAuth$.remove()
         //console.debug('authz dentro da extensão: ', data)
         document.body.style.borderColor = "green"
       }
