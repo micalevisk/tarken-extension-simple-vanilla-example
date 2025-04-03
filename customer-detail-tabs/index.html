@@ -28,7 +28,7 @@
     <h1 id="waiting_auth">Esperando autenticação...</h1>
     <h1 id="waiting_context">Esperando contexto...</h1>
 
-    <h1>Hello world!!</h1>
+    <h1 id='h1'></h1>
     <h3 id='h3'></h3>
     <pre id="tex-metadata-slot"></pre>
     <pre id="context-slot"></pre>
@@ -52,6 +52,7 @@
   <script type="module">
     const waitingAuth$ = document.getElementById('waiting_auth')
     const waitingContext$ = document.getElementById('waiting_context')
+    const h1$ = document.getElementById('h1')
     const h3$ = document.getElementById('h3')
     const contextSlot$ = document.getElementById('context-slot')
     const texMetadatSlot$ = document.getElementById('tex-metadata-slot')
@@ -93,6 +94,8 @@
     })
 
     await window.Tarken.tex.bridge.signals.communicationReady;
+
+    h1$.innerText = `Hello ${window.Tarken.tex.originHost}`;
 
     const libVersion = window.Tarken.tex.version;
     const environment = window.Tarken.tex.environment;
