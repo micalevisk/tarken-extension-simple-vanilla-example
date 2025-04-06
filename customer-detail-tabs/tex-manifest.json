@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/tarkenag/tex-schemas/v0/manifest.json",
   "name": "exemplo-new-location",
-  "baseUrl": "https://micalevisk.github.io/tarken-extension-simple-vanilla-example/customer-detail-tabs/",
+  "baseUrl": "http://localhost:7802",
   "modules": [
     {
       "key": "0",
@@ -15,24 +15,11 @@
       "queryParameters": {}
     },
     {
-      "key": "1",
-      "urlPath": "/",
-      "location": "hub.customer-detail-tabs.navigation-bar.top",
-      "attributes": {
-        "icon": "tex:",
-        "entryLabel": "Teste 2!!",
-        "description": "Exemplo 2 para a nova location com access token"
-      },
-      "queryParameters": {
-        "a": "{{ accessToken }}"
-      }
-    },
-    {
       "key": "2",
       "urlPath": "/",
       "location": "hub.customer-detail-tabs.navigation-bar.top",
       "attributes": {
-        "icon": "",
+        "icon": "idk",
         "entryLabel": "Teste 3 da nova location",
         "description": "Exemplo 3 para a nova location"
       },
@@ -54,14 +41,14 @@
     {
       "key": "test-sf",
       "urlPath": "/",
-      "location": "type:hub.organization.customer.smart-form-field",
+      "location": "type:hub.workflow.ticket.type.credit-request.form.smart-form-field",
       "attributes": {
         "description": "Exemplo de detail"
       }
     }
   ],
   "private": true,
-  "version": "0.0.7",
+  "version": "0.0.11",
   "apiVersion": "*",
   "vendorName": "Tarkenag",
   "description": "Exemplo de novo location",
